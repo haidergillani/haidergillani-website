@@ -2,8 +2,7 @@
  * Single source of truth for all site content.
  * Everything on the page is driven from this file — edit here to update the site.
  *
- * Content reconstructed from public sources (Minerva alumni interview, GitHub,
- * press). Verify + edit freely — this is your data.
+ * Content sourced from Haider's master + AI résumés. Verify + edit freely.
  */
 
 export type Highlight = {
@@ -33,10 +32,11 @@ export const profile = {
   name: "Haider Gillani",
   initials: "HG",
   role: "AI Engineer",
-  tagline: "I build at the seam between technology and human sustenance.",
+  tagline:
+    "Bridging the gap between technology and human sustenance — one city at a time.",
   location: "San Francisco, California",
   summary:
-    "Computational Sciences graduate of Minerva University — the university with no single campus. Over four years I lived and worked across seven cities on four continents, shipping AI and machine-learning work with the companies and institutions I found along the way. This map is where it happened.",
+    "AI Engineer at HP and founder of StarcAI. A Computational Sciences (AI & ML) and Strategic Finance graduate of Minerva University — the college with no single campus — I spent four years living and building across seven countries on four continents, from a UN mission in New York to digital-diplomacy work in Taipei. This map is where it all happened.",
   email: "haidergillani@uni.minerva.edu",
   socials: {
     github: "https://github.com/haidergillani",
@@ -55,24 +55,65 @@ export const locations: Location[] = [
     chapter: "Home base · Silicon Valley",
     years: "2021 – present",
     blurb:
-      "Where the journey began and where it comes home. First-year Minerva city, and now the base for my work in AI.",
+      "Where the journey began and where it returns. First-year Minerva city, the home of StarcAI, and the launchpad for what comes next.",
     featured: true,
     highlights: [
-      { org: "HP", role: "AI Engineer", url: "https://www.hp.com" },
       {
         org: "Google",
-        role: "Data Science Intern · Google Cloud (Sunnyvale)",
+        role: "Data Science Intern · Google Cloud, Sunnyvale",
         url: "https://cloud.google.com",
         note: "Summer 2026",
       },
       {
         org: "StarcAI",
-        role: "Founder — AI financial-communications software",
+        role: "CEO & Co-Founder — AI for financial communications",
         url: "https://github.com/haidergillani",
       },
       { org: "iD Tech", role: "AI & Python Instructor", url: "https://www.idtech.com" },
-      { org: "Vibemap", role: "Collaborator", url: "https://vibemap.com" },
-      { org: "Minerva University", role: "B.S. Computational Sciences", url: "https://www.minerva.edu" },
+      {
+        org: "Minerva University",
+        role: "B.Sc. Computational Sciences & Strategic Finance",
+        url: "https://www.minerva.edu",
+      },
+    ],
+  },
+  {
+    id: "new-york",
+    city: "New York",
+    country: "United States",
+    flag: "🇺🇸",
+    coordinates: [-74.006, 40.7128],
+    chapter: "Diplomacy meets AI",
+    years: "2025",
+    blurb:
+      "A summer inside the United Nations Security Council — representing Pakistan's delegation and building agentic AI to give diplomats their time back.",
+    featured: true,
+    highlights: [
+      {
+        org: "United Nations",
+        role: "Diplomat Intern & AI Engineer — Pakistan Mission to the UN",
+        note: "Jun – Sep 2025",
+      },
+    ],
+  },
+  {
+    id: "vancouver",
+    city: "Vancouver, WA",
+    country: "United States",
+    flag: "🇺🇸",
+    coordinates: [-122.6615, 45.6387],
+    chapter: "Enterprise AI at scale",
+    years: "2024 – present",
+    blurb:
+      "Shipping AI features to a million-plus users a month at HP — where research turns into production at real scale.",
+    featured: true,
+    highlights: [
+      {
+        org: "HP Inc.",
+        role: "AI Engineer & Technical PM — HP AI",
+        url: "https://www.hp.com",
+        note: "~100M+ scan jobs / mo",
+      },
     ],
   },
   {
@@ -83,11 +124,12 @@ export const locations: Location[] = [
     coordinates: [126.978, 37.5665],
     chapter: "Minerva semester",
     blurb:
-      "A semester inside Korea's tech ecosystem — venture capital, hardware giants, and a crash course in East-Asian innovation.",
+      "Inside Korea's tech ecosystem — venture capital, algorithmic research on social polarization, and curating ideas worth spreading.",
     featured: true,
     highlights: [
-      { org: "Kakao Ventures", role: "Startup & venture exposure", url: "https://www.kakao.vc" },
-      { org: "Samsung", role: "Industry exposure", url: "https://www.samsung.com" },
+      { org: "Kakao Ventures", role: "SWE Team Lead — social-graph analysis", url: "https://www.kakao.vc" },
+      { org: "TEDxSeoul", role: "Curator — speaker training & review" },
+      { org: "Samsung", role: "AI Forum contributor", url: "https://www.samsung.com" },
     ],
   },
   {
@@ -98,20 +140,19 @@ export const locations: Location[] = [
     coordinates: [121.5654, 25.033],
     chapter: "Minerva semester",
     blurb:
-      "Civic-tech and digital diplomacy at the world's semiconductor capital — studying how leaders hold morale together in wartime.",
+      "Civic-tech and digital diplomacy at the world's semiconductor capital — and a seat at the table with the people shaping it.",
     featured: true,
     highlights: [
       {
-        org: "Taiwan Digital Diplomacy Association",
-        role: "Civic Project Partner",
-        note: "Analyzed 200k+ posts on wartime communication",
+        org: "Taiwan Digital Diplomacy × Meta",
+        role: "AI/ML Intern — War-in-Ukraine analysis",
+        note: "200k+ posts",
       },
       {
-        org: "Meta",
-        role: "Research collaboration — War-in-Ukraine analysis",
-        url: "https://about.meta.com",
+        org: "Global Youth Forum",
+        role: "Student speaker — with Stan Shih & Audrey Tang",
       },
-      { org: "TSMC", role: "Industry exposure", url: "https://www.tsmc.com" },
+      { org: "TSMC", role: "Valuation & financial case study", url: "https://www.tsmc.com" },
     ],
   },
   {
@@ -122,17 +163,13 @@ export const locations: Location[] = [
     coordinates: [78.4867, 17.385],
     chapter: "Minerva semester",
     blurb:
-      "Applied machine learning against real problems — vaccine logistics — and taught AI to hundreds of students an ocean away.",
+      "Machine learning against a real crisis — optimizing COVID-19 vaccine distribution to reach far more people, faster.",
     highlights: [
       {
-        org: "NVIDIA × UPenn",
-        role: "AI-Python curriculum for 500+ students",
-        url: "https://www.nvidia.com",
-      },
-      {
-        org: "COVID Vaccine Distribution",
-        role: "ML optimization research",
+        org: "Vaccine Distribution",
+        role: "Genetic & greedy algorithms · SIR modeling",
         url: "https://github.com/haidergillani",
+        note: "+45% reach",
       },
     ],
   },
@@ -144,9 +181,9 @@ export const locations: Location[] = [
     coordinates: [-58.3816, -34.6037],
     chapter: "Minerva semester",
     blurb:
-      "A South-American chapter on global governance and democratic systems — perspective you can't get from a textbook.",
+      "A South-American chapter on global systems, governance, and the economics of emerging markets.",
     highlights: [
-      { org: "Minerva University", role: "Global governance & democracy studies", url: "https://www.minerva.edu" },
+      { org: "Minerva University", role: "Complex systems & global governance", url: "https://www.minerva.edu" },
     ],
   },
   {
@@ -157,9 +194,9 @@ export const locations: Location[] = [
     coordinates: [13.405, 52.52],
     chapter: "Minerva semester",
     blurb:
-      "Europe's startup capital — design, sustainability, and the politics of technology up close.",
+      "Europe's startup capital — sustainability, design thinking, and the politics of technology up close.",
     highlights: [
-      { org: "Minerva University", role: "Sustainability minor coursework", url: "https://www.minerva.edu" },
+      { org: "Minerva University", role: "Sustainability & design thinking", url: "https://www.minerva.edu" },
     ],
   },
   {
@@ -170,9 +207,13 @@ export const locations: Location[] = [
     coordinates: [-0.1276, 51.5072],
     chapter: "Minerva semester",
     blurb:
-      "Finance meets tech. A semester in one of the world's great capitals of both.",
+      "Where finance meets product. Led AI and strategy for NO HQ, matching businesses to workspaces across Europe.",
     highlights: [
-      { org: "Minerva University", role: "Finance & technology studies", url: "https://www.minerva.edu" },
+      {
+        org: "NO HQ for Business",
+        role: "Lead AI Engineer & Business Strategy",
+        note: "400+ locations",
+      },
     ],
   },
   {
@@ -183,13 +224,11 @@ export const locations: Location[] = [
     coordinates: [73.0479, 33.6844],
     chapter: "Where it started",
     blurb:
-      "Home. Where the curiosity was formed — and the diplomacy work that pointed me outward began.",
+      "Home. Where the curiosity was formed — national exams, early ventures, and the leap to a university spread across the world.",
     featured: true,
     highlights: [
-      {
-        org: "Pakistan Mission to the UN",
-        role: "Intern",
-      },
+      { org: "Cadet College Hasanabdal", role: "Top 5 nationwide · ~200k students" },
+      { org: "Early ventures", role: "Finance & business consulting" },
     ],
   },
 ];
@@ -200,7 +239,7 @@ export type Project = {
   description: string;
   stack: string[];
   url: string;
-  accent: string;
+  metric?: string;
 };
 
 export const projects: Project[] = [
@@ -208,56 +247,62 @@ export const projects: Project[] = [
     name: "StarcAI",
     tag: "Founder · FinTech AI",
     description:
-      "An AI system that helps companies communicate with shareholders and investors — automated sentiment modeling to build trust and confidence in financial messaging.",
-    stack: ["Python", "NLP", "LLMs", "Flask"],
+      "AI that rewrites corporate financial communications for optimism, confidence, and trust — a 6-scale sentiment model fine-tuned on annotated financial text, deployed as a full-stack SaaS.",
+    stack: ["FinBERT", "NLP", "NVIDIA CUDA", "Next.js", "PostgreSQL"],
     url: "https://github.com/haidergillani",
-    accent: "#d9b168",
+    metric: "+31% investor confidence",
   },
   {
-    name: "War-in-Ukraine Social Analysis",
+    name: "HP AI — Scan to Email",
+    tag: "AI Engineer · HP",
+    description:
+      "AI features shipping to a million-plus monthly SMB and home users — auto-routing and summarizing documents into a queryable knowledge base at global scale.",
+    stack: ["TensorFlow", "AWS Bedrock", "LLMs", "MLOps"],
+    url: "https://www.hp.com",
+    metric: "~100M+ scan jobs / month",
+  },
+  {
+    name: "War-in-Ukraine Analysis",
     tag: "Research · Meta × TDDA",
     description:
-      "Studied 200,000+ social posts from officials including President Zelenskyy to understand how wartime leadership sustains public morale — for Taiwan's digital-diplomacy playbook.",
-    stack: ["Python", "Sentiment Analysis", "Data Viz"],
+      "Led three engineers analyzing 200,000+ wartime social posts — including President Zelenskyy's — to map how leadership sustains public morale, informing Taiwan's digital-diplomacy playbook.",
+    stack: ["NLP", "Apache Spark", "NVIDIA CUDA", "Python"],
     url: "https://github.com/haidergillani",
-    accent: "#6fa8dc",
+    metric: "1M+ people reached",
   },
   {
-    name: "e-connect",
-    tag: "AI · Social Good",
+    name: "UN Agentic AI Workflow",
+    tag: "Pakistan Mission to the UN",
     description:
-      "An unsupervised genetic algorithm designed to reduce social-media polarization and increase openness to opposing viewpoints.",
-    stack: ["Python", "Genetic Algorithms", "ML"],
+      "A one-step agentic workflow with chain-of-thought reasoning that extracts and structures Security Council proceedings into decision-ready briefings for the Ministry of Foreign Affairs.",
+    stack: ["Agents", "LLMs", "ML Pipelines", "RAG"],
     url: "https://github.com/haidergillani",
-    accent: "#93c47d",
   },
   {
-    name: "AI-Python Curriculum",
-    tag: "Education · NVIDIA × UPenn",
+    name: "StockAI",
+    tag: "Founder · Quant AI",
     description:
-      "Authored and delivered Python and AI coursework to 500+ students in collaboration with NVIDIA and the University of Pennsylvania.",
-    stack: ["Python", "Curriculum", "Teaching"],
+      "A stock-prediction and research engine — a Bayesian neural network trained on 20 years of data across company, industry, and market-sentiment layers using FinBERT and GPT-4.",
+    stack: ["Bayesian NN", "Vertex AI", "TensorFlow", "GPT-4"],
     url: "https://github.com/haidergillani",
-    accent: "#c27ba0",
   },
   {
-    name: "COVID Vaccine Optimization",
-    tag: "ML · Public Health",
+    name: "NO HQ — Workspace Copilot",
+    tag: "Lead AI Engineer",
     description:
-      "Machine-learning models to optimize COVID-19 vaccine distribution across India's supply and demand constraints.",
-    stack: ["Python", "Optimization", "ML"],
+      "A MERN platform matching SMEs to workspaces across 400+ European locations, ranking options with an AI algorithm on Airflow and a fine-tuned LLM sales assistant.",
+    stack: ["MERN", "OpenAI API", "Airflow", "React"],
     url: "https://github.com/haidergillani",
-    accent: "#e69138",
+    metric: "400+ locations",
   },
-  {
-    name: "AI Workspace Copilot",
-    tag: "Founder · Product",
-    description:
-      "A copilot for SMEs to discover and book workspaces anywhere in the world — bringing the everywhere-office to small teams.",
-    stack: ["React", "LLMs", "Product"],
-    url: "https://github.com/haidergillani",
-    accent: "#76a5af",
-  },
+];
+
+/** Compact "also built" line under the featured projects. */
+export const alsoBuilt: string[] = [
+  "Fitter — 3D try-on with LIDAR (−70% returns)",
+  "Recall — remote SOS for lost phones",
+  "e-connect — de-polarizing social feeds",
+  "COVID vaccine distribution optimizer",
 ];
 
 /** Logos wall — the names encountered along the way. */
@@ -269,7 +314,7 @@ export const companies: string[] = [
   "Samsung",
   "TSMC",
   "Kakao Ventures",
-  "UPenn",
+  "United Nations",
   "iD Tech",
   "Minerva University",
   "Taiwan Digital Diplomacy Assoc.",

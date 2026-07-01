@@ -8,19 +8,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // warm ivory paper
+        cream: {
+          DEFAULT: "#F7F2E7",
+          deep: "#F1E8D5",
+          card: "#FCFAF3",
+        },
+        // near-black warm ink for text
         ink: {
-          950: "#070a12",
-          900: "#0a0e1a",
-          850: "#0d1220",
-          800: "#111827",
-          700: "#1b2436",
+          DEFAULT: "#211C15",
+          soft: "#6E6552",
+          faint: "#9C927B",
         },
-        gold: {
-          DEFAULT: "#d9b168",
-          soft: "#e7c98d",
-          deep: "#b8914b",
+        // deep pine — the signature accent
+        pine: {
+          DEFAULT: "#255C4A",
+          deep: "#1A4335",
+          light: "#3C7A64",
         },
-        haze: "#8a94a8",
+        // antique brass — metallic touch
+        brass: {
+          DEFAULT: "#B08D57",
+          light: "#C6A876",
+        },
       },
       fontFamily: {
         serif: ["var(--font-display)", "Georgia", "serif"],
@@ -31,7 +41,7 @@ const config: Config = {
       },
       keyframes: {
         pulseRing: {
-          "0%": { transform: "scale(0.6)", opacity: "0.7" },
+          "0%": { transform: "scale(0.6)", opacity: "0.5" },
           "80%, 100%": { transform: "scale(2.4)", opacity: "0" },
         },
         fadeUp: {

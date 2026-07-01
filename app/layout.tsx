@@ -38,23 +38,32 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: profile.name,
     type: "website",
+    images: [
+      {
+        url: "/og",
+        width: 1200,
+        height: 630,
+        alt: `${profile.name} — ${profile.role}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${profile.name} — ${profile.role}`,
     description: profile.tagline,
+    images: ["/og"],
   },
   icons: {
     icon: [
       {
-        url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0e1a'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='52' fill='%23d9b168' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E",
+        url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23255C4A'/%3E%3Ctext x='50' y='69' font-family='Georgia,serif' font-size='54' fill='%23F7F2E7' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E",
       },
     ],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0e1a",
+  themeColor: "#f7f2e7",
 };
 
 export default function RootLayout({
@@ -64,7 +73,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${body.variable} ${display.variable}`}>
-      <body className="bg-cosmos grain font-sans antialiased">{children}</body>
+      <body className="bg-paper grain font-sans antialiased">{children}</body>
     </html>
   );
 }

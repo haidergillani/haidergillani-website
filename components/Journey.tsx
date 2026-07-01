@@ -9,13 +9,13 @@ export default function Journey() {
     <section id="journey" className="relative mx-auto max-w-4xl px-6 py-24 scroll-mt-20">
       <SectionHeading
         eyebrow="The Route"
-        title="One degree at a time"
+        title="One city at a time"
         sub="Minerva has no campus — its students move city to city, continent to continent. Here is where each chapter landed, and the work that came with it."
       />
 
       <div className="relative mt-16">
         {/* vertical line */}
-        <div className="absolute left-[14px] top-2 h-full w-px bg-gradient-to-b from-gold/50 via-white/10 to-transparent sm:left-1/2" />
+        <div className="absolute left-[14px] top-2 h-full w-px bg-gradient-to-b from-pine/50 via-brass/30 to-transparent sm:left-1/2" />
 
         <div className="space-y-10">
           {locations.map((loc, i) => (
@@ -33,27 +33,25 @@ export default function Journey() {
             >
               {/* node */}
               <span
-                className={`absolute top-1.5 grid h-7 w-7 place-items-center rounded-full border border-gold/40 bg-ink-850 text-xs shadow-[0_0_16px_rgba(217,177,104,0.35)] left-0 sm:left-auto ${
-                  i % 2 === 0
-                    ? "sm:-right-[14px]"
-                    : "sm:-left-[14px]"
+                className={`absolute top-1.5 grid h-7 w-7 place-items-center rounded-full border border-brass/50 bg-cream-card text-xs shadow-sm left-0 sm:left-auto ${
+                  i % 2 === 0 ? "sm:-right-[14px]" : "sm:-left-[14px]"
                 }`}
               >
                 {loc.flag}
               </span>
 
-              <div className="rounded-2xl border border-white/10 bg-ink-850/50 p-5 backdrop-blur transition-colors hover:border-white/20">
+              <div className="rounded-2xl border border-ink/10 bg-cream-card/70 p-5 shadow-sm transition-all hover:border-pine/30 hover:shadow-md">
                 <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="font-serif text-xl text-white">
+                  <h3 className="font-serif text-xl text-ink">
                     {loc.city}
-                    <span className="text-haze">, {loc.country}</span>
+                    <span className="text-ink-faint">, {loc.country}</span>
                   </h3>
                 </div>
-                <p className="mt-0.5 text-[11px] uppercase tracking-[0.16em] text-gold-soft/90">
+                <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-pine">
                   {loc.chapter}
                   {loc.years ? ` · ${loc.years}` : ""}
                 </p>
-                <p className="mt-3 text-[13.5px] leading-relaxed text-haze">
+                <p className="mt-3 text-[13.5px] leading-relaxed text-ink-soft">
                   {loc.blurb}
                 </p>
                 <ul
@@ -64,7 +62,7 @@ export default function Journey() {
                   {loc.highlights.map((h) => (
                     <li
                       key={h.org}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] text-white/80"
+                      className="rounded-full border border-ink/10 bg-cream-deep/60 px-2.5 py-1 text-[11px] font-medium text-ink"
                     >
                       {h.org}
                     </li>
