@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0e1a;
+  color: #e9edf5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(217, 177, 104, 0.28);
+  color: #fff;
+}
+
+/* subtle starfield / vignette behind everything */
+.bg-cosmos {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(38, 56, 96, 0.5), transparent 60%),
+    radial-gradient(900px 500px at 85% 10%, rgba(217, 177, 104, 0.06), transparent 55%),
+    #0a0e1a;
+}
+
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* thin custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2b44;
+  border-radius: 999px;
+  border: 2px solid #0a0e1a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2b3a58;
+}
+
+.hairline {
+  border-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.14),
+      transparent
+    )
+    1;
+}
