@@ -1,0 +1,32 @@
+<svg width="1024" height="1024" viewBox="172 152 680 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="tileShadow" x="120" y="110" width="784" height="784" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="20" stdDeviation="28" flood-color="#000000" flood-opacity="0.14"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <filter id="markShadow" x="220" y="210" width="620" height="560" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.18"/>
+    </filter>
+    <linearGradient id="tileGradient" x1="512" y1="150" x2="512" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF8"/>
+      <stop offset="1" stop-color="#F3EEE6"/>
+    </linearGradient>
+    <linearGradient id="phoneGradient" x1="524" y1="553" x2="524" y2="767" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9B1E2A"/>
+      <stop offset="1" stop-color="#6E121C"/>
+    </linearGradient>
+    <radialGradient id="backgroundGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(620)">
+      <stop stop-color="#FFFDF8"/>
+      <stop offset="1" stop-color="#F5EFE7"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#backgroundGlow)"/>
+  <g filter="url(#tileShadow)">
+    <rect x="172" y="152" width="680" height="680" rx="154" fill="url(#tileGradient)"/>
+  </g>
+  <g filter="url(#markShadow)">
+    <path d="M390 670 C300 620 270 500 318 397 C371 284 501 238 615 284 C729 330 786 459 744 576 C730 614 707 648 676 674 C706 698 741 710 788 710" stroke="#252628" stroke-width="78" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="472" y="553" width="104" height="214" rx="28" fill="url(#phoneGradient)"/>
+    <rect x="503" y="571" width="42" height="8" rx="4" fill="#F7EFE8" opacity="0.92"/>
+  </g>
+</svg>

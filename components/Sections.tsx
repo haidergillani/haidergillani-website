@@ -5,6 +5,7 @@ import {
   recognition,
   roles,
 } from "@/lib/data";
+import OrgLogo from "./OrgLogo";
 
 function SectionHead({ title, aside }: { title: string; aside?: React.ReactNode }) {
   return (
@@ -21,30 +22,35 @@ const shell = "mx-auto max-w-plate px-4 sm:px-6";
 
 export function Work() {
   return (
-    <section id="work" className={`${shell} scroll-mt-6 pt-28`}>
-      <SectionHead title="Work" aside="2022 – now" />
+    <section id="work" className={`${shell} scroll-mt-16 pt-28`}>
+      <SectionHead title="Work" aside="2021 – now" />
       <ol>
         {roles.map((r) => (
           <li
             key={r.id}
             id={`role-${r.id}`}
-            className="grid scroll-mt-8 gap-3 border-b border-ink/10 py-9 md:grid-cols-[13rem_1fr] md:gap-10 [&:target_h3]:text-pine"
+            className="grid scroll-mt-20 gap-4 border-b border-ink/10 py-9 md:grid-cols-[13rem_1fr] md:gap-10 [&:target_h3]:text-pine"
           >
-            <div className="tabular font-mono text-[12px] leading-5">
+            <div className="tabular font-mono text-[12px] leading-5 md:pt-1.5">
               <p className="text-ink">{r.period}</p>
               <p className="text-ink-faint">{r.place}</p>
             </div>
             <div className="max-w-prose">
-              <h3 className="font-display text-[24px] leading-tight transition-colors">
-                {r.url ? (
-                  <a href={r.url} target="_blank" rel="noopener noreferrer" className="link">
-                    {r.org}
-                  </a>
-                ) : (
-                  r.org
-                )}
-              </h3>
-              <p className="mt-1 text-[15px] text-ink-muted">{r.title}</p>
+              <div className="flex items-center gap-4">
+                <OrgLogo id={r.orgId} size={44} />
+                <div className="min-w-0">
+                  <h3 className="font-display text-[23px] leading-tight transition-colors">
+                    {r.url ? (
+                      <a href={r.url} target="_blank" rel="noopener noreferrer" className="link">
+                        {r.org}
+                      </a>
+                    ) : (
+                      r.org
+                    )}
+                  </h3>
+                  <p className="mt-0.5 text-[15px] text-ink-muted">{r.title}</p>
+                </div>
+              </div>
               <p className="mt-4 text-[16px] leading-[1.7]">{r.body}</p>
             </div>
           </li>
@@ -56,12 +62,12 @@ export function Work() {
 
 export function Projects() {
   return (
-    <section id="projects" className={`${shell} scroll-mt-6 pt-28`}>
+    <section id="projects" className={`${shell} scroll-mt-16 pt-28`}>
       <SectionHead
         title="Projects"
         aside={
           <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className="link">
-            More on GitHub
+            All on GitHub
           </a>
         }
       />
@@ -69,7 +75,15 @@ export function Projects() {
         {projects.map((p) => (
           <li key={p.name} className="border-b border-ink/10 py-7">
             <div className="flex items-baseline justify-between gap-4">
-              <h3 className="font-display text-[21px] leading-tight">{p.name}</h3>
+              <h3 className="font-display text-[21px] leading-tight">
+                {p.url ? (
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="link">
+                    {p.name}
+                  </a>
+                ) : (
+                  p.name
+                )}
+              </h3>
               <span className="tabular font-mono text-[12px] text-ink-faint">{p.year}</span>
             </div>
             <p className="mt-2 max-w-prose text-[15px] leading-relaxed text-ink-muted">{p.body}</p>
@@ -98,12 +112,15 @@ export function Background() {
         <SectionHead title="Education" />
         <ul>
           {education.map((e) => (
-            <li key={e.school} className="border-b border-ink/10 py-5">
-              <div className="flex items-baseline justify-between gap-4">
-                <p className="font-display text-[18px] leading-snug">{e.school}</p>
-                <span className="tabular font-mono text-[12px] text-ink-faint">{e.year}</span>
+            <li key={e.school} className="flex gap-4 border-b border-ink/10 py-5">
+              <OrgLogo id={e.orgId} size={40} className="mt-0.5" />
+              <div className="min-w-0 flex-1">
+                <div className="flex items-baseline justify-between gap-4">
+                  <p className="font-display text-[18px] leading-snug">{e.school}</p>
+                  <span className="tabular font-mono text-[12px] text-ink-faint">{e.year}</span>
+                </div>
+                <p className="mt-1 text-[15px] leading-relaxed text-ink-muted">{e.detail}</p>
               </div>
-              <p className="mt-1 text-[15px] leading-relaxed text-ink-muted">{e.detail}</p>
             </li>
           ))}
         </ul>
@@ -114,7 +131,7 @@ export function Background() {
 
 export function Contact() {
   return (
-    <section id="contact" className={`${shell} scroll-mt-6 pb-20 pt-28`}>
+    <section id="contact" className={`${shell} scroll-mt-16 pb-20 pt-28`}>
       <SectionHead title="Contact" />
       <div className="mt-8">
         <a

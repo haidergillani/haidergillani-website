@@ -1,12 +1,16 @@
 /**
  * All site content lives here. Edit this file to update the site.
- * Source: Haider's 2026 AI résumé, with older details from the master résumé.
+ * Source: Haider's 2026 AI résumé, with older details from the master résumé
+ * and Haider's own notes.
  */
 
 export const profile = {
   name: "Haider Gillani",
   role: "AI Engineer",
-  now: ["AI Engineering Lead, HP", "Founder, miQ"],
+  now: [
+    { orgId: "hp", label: "AI Engineering Lead, HP" },
+    { orgId: "miq", label: "Founder, miQ" },
+  ] as const,
   intro:
     "I'm an AI engineer. I lead AI engineering on HP's scanning products and I'm building miQ, a way to turn phones into wireless microphones for live events. Studying at Minerva University meant living in seven countries in four years. The map shows where, and what I worked on in each place.",
   description:
@@ -19,8 +23,34 @@ export const profile = {
   },
 };
 
+export type Org = {
+  name: string;
+  /** path under /public; orgs without an official logo get a lettered mark */
+  logo?: string;
+  /** "cover" for logos that are already a full square tile */
+  fit?: "contain" | "cover";
+  mark?: string;
+};
+
+export const orgs = {
+  miq: { name: "miQ", logo: "/logos/miq.svg", fit: "cover" },
+  hp: { name: "HP", logo: "/logos/hp.svg" },
+  un: { name: "Pakistan Mission to the United Nations", logo: "/logos/pakistan-mission.png" },
+  starcai: { name: "StarcAI", logo: "/logos/starcai.png", fit: "cover" },
+  nohq: { name: "NO HQ", mark: "NO HQ" },
+  uai: { name: "Universidad Abierta Interamericana", logo: "/logos/uai.png", fit: "cover" },
+  tdda: { name: "Taiwan Digital Diplomacy Association", mark: "TDDA" },
+  kakao: { name: "Kakao Ventures", logo: "/logos/kakao-ventures.png" },
+  vibemap: { name: "Vibemap", logo: "/logos/vibemap.svg" },
+  minerva: { name: "Minerva University", logo: "/logos/minerva.png" },
+  cch: { name: "Cadet College Hasanabdal", logo: "/logos/cadet-college-hasanabdal.png" },
+} satisfies Record<string, Org>;
+
+export type OrgId = keyof typeof orgs;
+
 export type Role = {
   id: string;
+  orgId: OrgId;
   org: string;
   url?: string;
   title: string;
@@ -30,10 +60,11 @@ export type Role = {
   body: string;
 };
 
-/** Most recent first. */
+/** Current roles first, then by end date. */
 export const roles: Role[] = [
   {
     id: "miq",
+    orgId: "miq",
     org: "miQ",
     url: "https://trymiq.com",
     title: "Founder and full-stack engineer",
@@ -44,6 +75,7 @@ export const roles: Role[] = [
   },
   {
     id: "hp",
+    orgId: "hp",
     org: "HP",
     url: "https://www.hp.com/hp_ai",
     title: "AI Engineering Lead, HP AI",
@@ -54,6 +86,7 @@ export const roles: Role[] = [
   },
   {
     id: "un",
+    orgId: "un",
     org: "Pakistan Mission to the United Nations",
     title: "Diplomat intern and AI engineer",
     period: "Summer 2025",
@@ -63,6 +96,7 @@ export const roles: Role[] = [
   },
   {
     id: "starcai",
+    orgId: "starcai",
     org: "StarcAI",
     url: "https://www.starcai.us",
     title: "Co-founder, AI and full-stack engineering",
@@ -73,6 +107,7 @@ export const roles: Role[] = [
   },
   {
     id: "nohq",
+    orgId: "nohq",
     org: "NO HQ",
     title: "Lead AI engineer",
     period: "2023 – 2024",
@@ -82,16 +117,18 @@ export const roles: Role[] = [
   },
   {
     id: "uai",
+    orgId: "uai",
     org: "Universidad Abierta Interamericana",
     url: "https://www.uai.edu.ar",
     title: "Simulation for robotics prototyping",
     period: "2023",
-    place: "Buenos Aires",
+    place: "Buenos Aires · Minerva civic project",
     placeId: "buenos-aires",
     body: "With inflation above 100%, Argentina's robotics teams were being priced out of national competitions by the cost of hardware. Working with the university's robotics lab, we built a system to model every candidate design, have the designs compete in simulation, and build only the winner. The lab went from eight to ten physical prototypes costing thousands of dollars to a single one costing a few hundred.",
   },
   {
     id: "tdda",
+    orgId: "tdda",
     org: "Taiwan Digital Diplomacy Association",
     url: "https://github.com/haidergillani/War-In-Ukraine---Topic-Modeling-and-Sentiment-Analysis-of-Social-Media-",
     title: "AI/ML intern",
@@ -102,12 +139,24 @@ export const roles: Role[] = [
   },
   {
     id: "kakao",
+    orgId: "kakao",
     org: "Kakao Ventures",
     title: "Software engineering team lead",
     period: "Spring 2022",
     place: "Seoul",
     placeId: "seoul",
     body: "We looked at what happens to public discussion when a product scales to a mainstream audience. My team studied echo chambers in Facebook's feed with topic modeling and sentiment analysis over 100,000 posts, then proposed an unsupervised genetic algorithm for recommending posts that reduces polarization, and presented it to reviewers from more than 75 countries.",
+  },
+  {
+    id: "vibemap",
+    orgId: "vibemap",
+    org: "Vibemap",
+    url: "https://vibemap.com",
+    title: "Content recommendation",
+    period: "2021 – 2022",
+    place: "San Francisco",
+    placeId: "san-francisco",
+    body: "Vibemap helps cities and districts market themselves, and its app suggests places and events to visitors and locals based on the vibe they're after. I worked on content recommendation, using user data to decide which places and events to show each person.",
   },
 ];
 
@@ -123,6 +172,8 @@ export type Place = {
   note: string;
   /** a few words for the index */
   index: string;
+  /** organizations shown as logos for this place */
+  orgs: OrgId[];
 };
 
 /** Sorted west to east, the order you read the map. */
@@ -135,6 +186,7 @@ export const places: Place[] = [
     labelSide: "left",
     note: "With HP since 2024. miQ's first pilots ran in the Portland–Vancouver area.",
     index: "HP, miQ",
+    orgs: ["hp", "miq"],
   },
   {
     id: "san-francisco",
@@ -142,8 +194,9 @@ export const places: Place[] = [
     country: "United States",
     coords: [-122.4194, 37.7749],
     labelSide: "left",
-    note: "First year at Minerva, 2021, alongside NLP work for Bay Area startups. Co-founded StarcAI here in 2023.",
-    index: "Minerva, StarcAI",
+    note: "First year at Minerva, 2021, and recommendation work for Vibemap. Co-founded StarcAI here in 2023.",
+    index: "Minerva, Vibemap, StarcAI",
+    orgs: ["minerva", "vibemap", "starcai"],
   },
   {
     id: "new-york",
@@ -153,6 +206,7 @@ export const places: Place[] = [
     labelSide: "right",
     note: "Summer 2025 with Pakistan's delegation to the UN Security Council.",
     index: "United Nations",
+    orgs: ["un"],
   },
   {
     id: "buenos-aires",
@@ -160,8 +214,9 @@ export const places: Place[] = [
     country: "Argentina",
     coords: [-58.3816, -34.6037],
     labelSide: "right",
-    note: "A Minerva semester in 2023, and a simulation system that let UAI's robotics lab test designs without building them.",
+    note: "A Minerva semester in 2023. For a Minerva civic project, built a simulation system that let UAI's robotics lab test designs without building them.",
     index: "Minerva, UAI robotics lab",
+    orgs: ["minerva", "uai"],
   },
   {
     id: "london",
@@ -171,6 +226,7 @@ export const places: Place[] = [
     labelSide: "left",
     note: "A Minerva semester, and AI engineering for NO HQ.",
     index: "Minerva, NO HQ",
+    orgs: ["minerva", "nohq"],
   },
   {
     id: "berlin",
@@ -180,6 +236,7 @@ export const places: Place[] = [
     labelSide: "right",
     note: "A Minerva semester.",
     index: "Minerva semester",
+    orgs: ["minerva"],
   },
   {
     id: "islamabad",
@@ -189,6 +246,7 @@ export const places: Place[] = [
     labelSide: "left",
     note: "Home. Finished school at Cadet College Hasanabdal in 2021.",
     index: "Home",
+    orgs: ["cch"],
   },
   {
     id: "hyderabad",
@@ -198,6 +256,7 @@ export const places: Place[] = [
     labelSide: "right",
     note: "A Minerva semester.",
     index: "Minerva semester",
+    orgs: ["minerva"],
   },
   {
     id: "taipei",
@@ -207,6 +266,7 @@ export const places: Place[] = [
     labelSide: "right",
     note: "Fall 2022. NLP research for the Taiwan Digital Diplomacy Association, a talk on AI at the Global Youth Trends Forum, and a visit to TSMC's labs.",
     index: "TDDA, Global Youth Trends Forum",
+    orgs: ["minerva", "tdda"],
   },
   {
     id: "seoul",
@@ -216,6 +276,7 @@ export const places: Place[] = [
     labelSide: "right",
     note: "Spring 2022. Led a software team at Kakao Ventures.",
     index: "Kakao Ventures",
+    orgs: ["minerva", "kakao"],
   },
 ];
 
@@ -223,13 +284,15 @@ export type Project = {
   name: string;
   year: string;
   body: string;
+  url?: string;
 };
 
 export const projects: Project[] = [
   {
-    name: "StockAI",
-    year: "2023",
-    body: "A stock research tool built on a Bayesian neural network, trained on twenty years of Apple and Google data across company, industry and market-sentiment signals.",
+    name: "Karahi House voice receptionist",
+    year: "2026",
+    url: "https://github.com/haidergillani/Karahi-House",
+    body: "A phone agent that takes orders for a Pakistani restaurant in San Francisco. Off-the-shelf voice bots hear “chicken karahi” as “chicken curry”, so I built a phonetic matcher for South Asian accents and dish names, and an ordering flow grounded in the menu so it never invents a price.",
   },
   {
     name: "Fitter",
@@ -237,13 +300,21 @@ export const projects: Project[] = [
     body: "A 3D fit preview for buying clothes online. It measures the body from a phone's LiDAR scan and strips facial and skin data from the model.",
   },
   {
+    name: "StockAI",
+    year: "2023",
+    url: "https://github.com/haidergillani/StockAI-Tech-Stocks-Prediction-using-AI",
+    body: "A stock research tool built on a Bayesian neural network, trained on twenty years of Apple and Google data across company, industry and market-sentiment signals.",
+  },
+  {
     name: "Recall",
     year: "2022",
+    url: "https://github.com/haidergillani/Recall--Remote-SOS-Engine-for-Lost-Phones",
     body: "An Android and iOS app that sounds an alarm on a lost phone and sends back its location by text message, even with mobile data and location turned off.",
   },
   {
     name: "Vaccine distribution model",
     year: "2022",
+    url: "https://github.com/haidergillani/Prototype-Optimized-COVID-Vaccine-Distribution",
     body: "Genetic and greedy algorithms for allocating COVID-19 vaccines across Uttar Pradesh. In SIR simulations the plan reached 45% more people than the existing distribution.",
   },
 ];
@@ -268,14 +339,16 @@ export const recognition: { what: string; detail: string }[] = [
   },
 ];
 
-export const education: { school: string; detail: string; year: string }[] = [
+export const education: { orgId: OrgId; school: string; detail: string; year: string }[] = [
   {
+    orgId: "minerva",
     school: "Minerva University",
     detail:
       "B.Sc. Computational Sciences (AI & ML) and Business (Strategic Finance). Classes and work placements in San Francisco, Seoul, Hyderabad, Berlin, Buenos Aires, London and Taipei.",
     year: "2025",
   },
   {
+    orgId: "cch",
     school: "Cadet College Hasanabdal",
     detail: "Higher secondary school, Pakistan.",
     year: "2021",

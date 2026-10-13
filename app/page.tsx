@@ -1,42 +1,32 @@
 import Atlas from "@/components/Atlas";
+import Header from "@/components/Header";
+import OrgLogo from "@/components/OrgLogo";
 import { Background, Contact, Projects, Work } from "@/components/Sections";
 import { profile } from "@/lib/data";
-
-const nav = [
-  { href: "#work", label: "Work" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-];
 
 export default function Home() {
   return (
     <>
-      <header className="mx-auto flex max-w-plate items-baseline justify-between gap-6 px-4 pt-6 sm:px-6">
-        <p className="hidden font-mono text-[12px] text-ink-muted sm:block">
-          {profile.now.join("  ·  ")}
-        </p>
-        <nav aria-label="Sections" className="flex gap-6 text-[14px]">
-          {nav.map((n) => (
-            <a key={n.href} href={n.href} className="text-ink-muted transition-colors hover:text-ink">
-              {n.label}
-            </a>
-          ))}
-          <a
-            href={profile.resume}
-            target="_blank"
-            rel="noopener"
-            className="text-ink transition-colors hover:text-pine"
-          >
-            Résumé
-          </a>
-        </nav>
-      </header>
+      <Header />
 
-      <main>
-        <section className="mx-auto grid max-w-plate gap-6 px-4 pb-12 pt-16 sm:px-6 md:grid-cols-[1fr_minmax(0,30rem)] md:items-end md:gap-12 md:pt-28">
-          <h1 className="font-display text-[46px] leading-[0.95] tracking-[-0.025em] sm:text-[72px]">
-            Haider Gillani
-          </h1>
+      <main id="top" className="scroll-mt-20">
+        <section className="mx-auto grid max-w-plate gap-8 px-4 pb-12 pt-14 sm:px-6 md:grid-cols-[1fr_minmax(0,30rem)] md:items-end md:gap-12 md:pt-24">
+          <div>
+            <h1
+              id="hero-name"
+              className="font-display text-[46px] leading-[0.95] tracking-[-0.025em] sm:text-[72px]"
+            >
+              {profile.name}
+            </h1>
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3" aria-label="Current roles">
+              {profile.now.map((n) => (
+                <li key={n.label} className="flex items-center gap-2.5 text-[14px] text-ink">
+                  <OrgLogo id={n.orgId} size={26} />
+                  {n.label}
+                </li>
+              ))}
+            </ul>
+          </div>
           <p className="text-[17px] leading-relaxed text-ink-muted sm:text-[18px]">
             {profile.intro}
           </p>

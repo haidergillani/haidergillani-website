@@ -45,9 +45,3 @@ export function projectToPercent(coords: [number, number]) {
   const [x, y] = project(coords);
   return { left: (x / MAP_WIDTH) * 100, top: (y / MAP_HEIGHT) * 100 };
 }
-
-export function formatCoords([lng, lat]: [number, number]) {
-  const ns = lat >= 0 ? "N" : "S";
-  const ew = lng >= 0 ? "E" : "W";
-  return `${Math.abs(lat).toFixed(2)}° ${ns}  ${Math.abs(lng).toFixed(2)}° ${ew}`;
-}

@@ -77,7 +77,7 @@ export async function GET() {
               color: muted,
             }}
           >
-            <div style={{ display: "flex" }}>{profile.now.join("  ·  ")}</div>
+            <div style={{ display: "flex" }}>{profile.now.map((n) => n.label).join("  ·  ")}</div>
             <div style={{ display: "flex" }}>haidergillani.com</div>
           </div>
 
