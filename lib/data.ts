@@ -17,6 +17,12 @@ export const profile = {
     "AI engineer leading AI engineering on HP's scanning products and building miQ. Places lived and worked, 2021–2026.",
   email: "haidergillani@uni.minerva.edu",
   resume: "/Haider-Gillani-Resume.pdf",
+  photo: {
+    src: "/photos/speaking.jpg",
+    width: 1087,
+    height: 1359,
+    alt: "Haider Gillani speaking to an audience, microphone in hand",
+  },
   links: {
     linkedin: "https://www.linkedin.com/in/haidergillaniii",
     github: "https://github.com/haidergillani",
@@ -35,7 +41,7 @@ export type Org = {
 export const orgs = {
   miq: { name: "miQ", logo: "/logos/miq.svg", fit: "cover" },
   hp: { name: "HP", logo: "/logos/hp.svg" },
-  un: { name: "Pakistan Mission to the United Nations", logo: "/logos/pakistan-mission.png" },
+  un: { name: "Pakistan Mission to the United Nations", logo: "/logos/un.png" },
   starcai: { name: "StarcAI", logo: "/logos/starcai.png", fit: "cover" },
   nohq: { name: "NO HQ", mark: "NO HQ" },
   uai: { name: "Universidad Abierta Interamericana", logo: "/logos/uai.png", fit: "cover" },
@@ -48,6 +54,14 @@ export const orgs = {
 
 export type OrgId = keyof typeof orgs;
 
+export type Photo = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  caption?: string;
+};
+
 export type Role = {
   id: string;
   orgId: OrgId;
@@ -58,6 +72,7 @@ export type Role = {
   place: string;
   placeId: string;
   body: string;
+  photo?: Photo;
 };
 
 /** Current roles first, then by end date. */
@@ -83,6 +98,13 @@ export const roles: Role[] = [
     place: "Vancouver, WA",
     placeId: "vancouver",
     body: "I built and launched HP's first two HP AI features, Precise Scan and Scan to Email Summary, working as both engineer and technical PM from first prototype through customer testing to the US launch. I created the HP AI subscription bundle, which reaches about a million small-business users a month, has handled more than 100 million scans, and cut scan time in half. I also built a knowledge base of scanned business documents that customers can query through HP AI, with OCR-driven routing and data extraction on Claude, TensorFlow and AWS Bedrock.",
+    photo: {
+      src: "/photos/ces-hp.jpg",
+      width: 1200,
+      height: 1600,
+      alt: "Haider standing beside a large HP logo at CES, holding his HP staff badge",
+      caption: "At CES with HP, Las Vegas",
+    },
   },
   {
     id: "un",

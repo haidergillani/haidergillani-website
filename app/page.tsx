@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Atlas from "@/components/Atlas";
 import Header from "@/components/Header";
 import OrgLogo from "@/components/OrgLogo";
@@ -10,7 +11,7 @@ export default function Home() {
       <Header />
 
       <main id="top" className="scroll-mt-20">
-        <section className="mx-auto grid max-w-plate gap-8 px-4 pb-12 pt-14 sm:px-6 md:grid-cols-[1fr_minmax(0,30rem)] md:items-end md:gap-12 md:pt-24">
+        <section className="mx-auto grid max-w-plate gap-10 px-4 pb-14 pt-12 sm:px-6 md:grid-cols-[1fr_auto] md:items-end md:gap-16 md:pt-20">
           <div>
             <h1
               id="hero-name"
@@ -26,10 +27,21 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            <p className="mt-8 max-w-[34rem] text-[17px] leading-relaxed text-ink-muted sm:text-[18px]">
+              {profile.intro}
+            </p>
           </div>
-          <p className="text-[17px] leading-relaxed text-ink-muted sm:text-[18px]">
-            {profile.intro}
-          </p>
+          <div className="border border-ink/20 bg-plate p-1.5 outline outline-1 outline-offset-[5px] outline-ink/10 md:w-[18rem] lg:w-[20rem]">
+            <Image
+              src={profile.photo.src}
+              width={profile.photo.width}
+              height={profile.photo.height}
+              alt={profile.photo.alt}
+              priority
+              sizes="(min-width: 1024px) 20rem, (min-width: 768px) 18rem, 100vw"
+              className="aspect-[4/3] w-full object-cover object-[50%_25%] md:aspect-[4/5]"
+            />
+          </div>
         </section>
 
         <Atlas />

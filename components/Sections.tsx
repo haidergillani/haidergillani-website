@@ -5,6 +5,7 @@ import {
   recognition,
   roles,
 } from "@/lib/data";
+import Image from "next/image";
 import OrgLogo from "./OrgLogo";
 
 function SectionHead({ title, aside }: { title: string; aside?: React.ReactNode }) {
@@ -35,6 +36,7 @@ export function Work() {
               <p className="text-ink">{r.period}</p>
               <p className="text-ink-faint">{r.place}</p>
             </div>
+            <div className="lg:flex lg:items-start lg:gap-12">
             <div className="max-w-prose">
               <div className="flex items-center gap-4">
                 <OrgLogo id={r.orgId} size={44} />
@@ -52,6 +54,26 @@ export function Work() {
                 </div>
               </div>
               <p className="mt-4 text-[16px] leading-[1.7]">{r.body}</p>
+            </div>
+            {r.photo && (
+              <figure className="mt-6 max-w-[16rem] shrink-0 lg:mt-1 lg:w-56">
+                <div className="border border-ink/20 bg-plate p-1">
+                  <Image
+                    src={r.photo.src}
+                    width={r.photo.width}
+                    height={r.photo.height}
+                    alt={r.photo.alt}
+                    sizes="16rem"
+                    className="aspect-[3/4] w-full object-cover"
+                  />
+                </div>
+                {r.photo.caption && (
+                  <figcaption className="mt-2 font-mono text-[11px] text-ink-faint">
+                    {r.photo.caption}
+                  </figcaption>
+                )}
+              </figure>
+            )}
             </div>
           </li>
         ))}
