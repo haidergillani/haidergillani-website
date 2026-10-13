@@ -12,6 +12,7 @@ export const profile = {
   description:
     "AI engineer leading AI engineering on HP's scanning products and building miQ. Places lived and worked, 2021–2026.",
   email: "haidergillani@uni.minerva.edu",
+  resume: "/Haider-Gillani-Resume.pdf",
   links: {
     linkedin: "https://www.linkedin.com/in/haidergillaniii",
     github: "https://github.com/haidergillani",
@@ -44,7 +45,7 @@ export const roles: Role[] = [
   {
     id: "hp",
     org: "HP",
-    url: "https://www.hp.com",
+    url: "https://www.hp.com/hp_ai",
     title: "AI Engineering Lead, HP AI",
     period: "2024 – now",
     place: "Vancouver, WA",
@@ -63,6 +64,7 @@ export const roles: Role[] = [
   {
     id: "starcai",
     org: "StarcAI",
+    url: "https://www.starcai.us",
     title: "Co-founder, AI and full-stack engineering",
     period: "2023 – 2025",
     place: "San Francisco",
@@ -76,16 +78,27 @@ export const roles: Role[] = [
     period: "2023 – 2024",
     place: "London",
     placeId: "london",
-    body: "I built NO HQ's booking app on the MERN stack for workspaces at more than 400 locations across the UK and Europe, and a ranking model on Airflow that matched companies to spaces by price, schedule, location and team size.",
+    body: "Hybrid work left companies paying for offices they rarely filled. NO HQ splits large leased offices into rooms that startups can book by the day: the original tenant earns back rent, and a small team gets a proper meeting room on the few days it comes in. I built the booking app on the MERN stack, covering more than 400 locations across the UK and Europe, and a ranking model on Airflow that matched teams to spaces by price, schedule, location and size.",
+  },
+  {
+    id: "uai",
+    org: "Universidad Abierta Interamericana",
+    url: "https://www.uai.edu.ar",
+    title: "Simulation for robotics prototyping",
+    period: "2023",
+    place: "Buenos Aires",
+    placeId: "buenos-aires",
+    body: "With inflation above 100%, Argentina's robotics teams were being priced out of national competitions by the cost of hardware. Working with the university's robotics lab, we built a system to model every candidate design, have the designs compete in simulation, and build only the winner. The lab went from eight to ten physical prototypes costing thousands of dollars to a single one costing a few hundred.",
   },
   {
     id: "tdda",
     org: "Taiwan Digital Diplomacy Association",
+    url: "https://github.com/haidergillani/War-In-Ukraine---Topic-Modeling-and-Sentiment-Analysis-of-Social-Media-",
     title: "AI/ML intern",
     period: "Fall 2022",
     place: "Taipei",
     placeId: "taipei",
-    body: "I led three engineers studying how the war in Ukraine was communicated online. We collected more than 200,000 posts from Facebook, TikTok and Twitter with Spark pipelines, then used topic modeling and sentiment analysis to measure how messages from President Zelenskyy and Ukraine's foreign ministry landed with audiences at home and abroad.",
+    body: "I led three engineers studying how the war in Ukraine was communicated online. We collected more than 200,000 posts from Facebook, TikTok and Twitter with Spark pipelines, then used topic modeling and sentiment analysis to measure how messages from President Zelenskyy and Ukraine's foreign ministry landed with audiences at home and abroad. The findings went to Taiwan's government as guidance on communicating with citizens during a crisis.",
   },
   {
     id: "kakao",
@@ -94,7 +107,7 @@ export const roles: Role[] = [
     period: "Spring 2022",
     place: "Seoul",
     placeId: "seoul",
-    body: "My team studied echo chambers in Facebook's feed by running topic modeling and sentiment analysis over 100,000 posts. We proposed an unsupervised genetic algorithm for recommending posts that would reduce polarization, and presented it to reviewers from more than 75 countries.",
+    body: "We looked at what happens to public discussion when a product scales to a mainstream audience. My team studied echo chambers in Facebook's feed with topic modeling and sentiment analysis over 100,000 posts, then proposed an unsupervised genetic algorithm for recommending posts that reduces polarization, and presented it to reviewers from more than 75 countries.",
   },
 ];
 
@@ -129,7 +142,7 @@ export const places: Place[] = [
     country: "United States",
     coords: [-122.4194, 37.7749],
     labelSide: "left",
-    note: "First year at Minerva, 2021. Co-founded StarcAI here in 2023.",
+    note: "First year at Minerva, 2021, alongside NLP work for Bay Area startups. Co-founded StarcAI here in 2023.",
     index: "Minerva, StarcAI",
   },
   {
@@ -147,8 +160,8 @@ export const places: Place[] = [
     country: "Argentina",
     coords: [-58.3816, -34.6037],
     labelSide: "right",
-    note: "A Minerva semester.",
-    index: "Minerva semester",
+    note: "A Minerva semester in 2023, and a simulation system that let UAI's robotics lab test designs without building them.",
+    index: "Minerva, UAI robotics lab",
   },
   {
     id: "london",
@@ -192,8 +205,8 @@ export const places: Place[] = [
     country: "Taiwan",
     coords: [121.5654, 25.033],
     labelSide: "right",
-    note: "Fall 2022. Studied wartime social media for the Taiwan Digital Diplomacy Association and spoke at the Global Youth Forum.",
-    index: "TDDA, Global Youth Forum",
+    note: "Fall 2022. NLP research for the Taiwan Digital Diplomacy Association, a talk on AI at the Global Youth Trends Forum, and a visit to TSMC's labs.",
+    index: "TDDA, Global Youth Trends Forum",
   },
   {
     id: "seoul",
@@ -245,7 +258,7 @@ export const recognition: { what: string; detail: string }[] = [
     detail: "Presented by HP President Anneliese Olson.",
   },
   {
-    what: "Speaker, Global Youth Forum, Taiwan, 2022",
+    what: "Speaker, Global Youth Trends Forum, Taiwan, 2022",
     detail:
       "Led seminars on AI and LLMs for business at a four-day forum with Stan Shih, Audrey Tang and participants from 30+ countries.",
   },

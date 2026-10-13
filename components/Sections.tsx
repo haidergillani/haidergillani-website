@@ -123,7 +123,10 @@ export function Contact() {
         >
           {profile.email}
         </a>
-        <p className="mt-6 flex gap-6 text-[15px]">
+        <p className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
+          <a href={profile.resume} download className="link">
+            Download résumé (PDF)
+          </a>
           <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="link">
             LinkedIn
           </a>

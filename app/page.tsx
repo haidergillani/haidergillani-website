@@ -21,6 +21,14 @@ export default function Home() {
               {n.label}
             </a>
           ))}
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener"
+            className="text-ink transition-colors hover:text-pine"
+          >
+            Résumé
+          </a>
         </nav>
       </header>
 
