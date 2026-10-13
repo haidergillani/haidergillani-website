@@ -156,6 +156,7 @@ export function Contact() {
     <section id="contact" className={`${shell} scroll-mt-16 pb-20 pt-28`}>
       <SectionHead title="Contact" />
       <div className="mt-8">
+        <p className="mb-3 text-[16px] text-ink-muted">Email is the best way to reach me.</p>
         <a
           href={`mailto:${profile.email}`}
           className="link break-words font-display text-[22px] sm:text-[36px]"

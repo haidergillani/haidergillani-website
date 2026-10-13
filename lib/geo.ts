@@ -29,9 +29,10 @@ export const MAP_HEIGHT = Math.ceil(y1 - y0 + PAD_Y * 2);
 
 const path = geoPath(projection);
 
-export const countryPaths: string[] = land.features
-  .map((f) => path(f) || "")
-  .filter(Boolean);
+/** Every country's outline, keyed by its ISO 3166 numeric code. */
+export const countryPaths: { id: string; d: string }[] = land.features
+  .map((f) => ({ id: String(f.id), d: path(f) || "" }))
+  .filter((c) => c.d);
 
 export const graticulePath: string = path(geoGraticule10()) || "";
 

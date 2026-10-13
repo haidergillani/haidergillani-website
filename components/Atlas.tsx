@@ -27,6 +27,13 @@ for (const r of roles) {
 }
 
 const countryCount = new Set(places.map((p) => p.country)).size;
+const visited = new Set(places.map((p) => p.countryCode));
+
+// Land tones: countries I've lived in are a shade deeper; the one under the
+// pointer turns sage, a quiet tint of the pine accent.
+const LAND = "#EDE6D5";
+const LAND_VISITED = "#E1D3B3";
+const LAND_ACTIVE = "#C6CEBB";
 
 type Pin = Place & { left: number; top: number };
 
@@ -106,16 +113,40 @@ export default function Atlas() {
             className="absolute inset-0 h-full w-full"
             aria-hidden
           >
+            <defs>
+              <radialGradient id="sea" cx="50%" cy="42%" r="75%">
+                <stop offset="0%" stopColor="#FDFBF6" />
+                <stop offset="100%" stopColor="#F1EADB" />
+              </radialGradient>
+            </defs>
+            <rect width={MAP_WIDTH} height={MAP_HEIGHT} fill="url(#sea)" />
             <path
               d={graticulePath}
               fill="none"
               stroke="#1F1B16"
-              strokeOpacity={0.08}
+              strokeOpacity={0.07}
               strokeWidth={0.6}
             />
-            <g fill="#E9E0CC" stroke="#CFC2A4" strokeWidth={0.5} strokeLinejoin="round">
-              {countryPaths.map((d, i) => (
-                <path key={i} d={d} />
+            {/* a soft halo along the coasts, like the water line on a printed map */}
+            <g fill="none" stroke="#E4D9C2" strokeWidth={3.5} strokeLinejoin="round">
+              {countryPaths.map((c, i) => (
+                <path key={i} d={c.d} />
+              ))}
+            </g>
+            <g stroke="#CBBD9C" strokeWidth={0.5} strokeLinejoin="round">
+              {countryPaths.map((c, i) => (
+                <path
+                  key={i}
+                  d={c.d}
+                  fill={
+                    c.id === activePin?.countryCode
+                      ? LAND_ACTIVE
+                      : visited.has(c.id)
+                        ? LAND_VISITED
+                        : LAND
+                  }
+                  className="transition-[fill] duration-300"
+                />
               ))}
             </g>
             <g
@@ -160,8 +191,12 @@ export default function Atlas() {
               2021 – 2026 · {places.length} places · {countryCount} countries
             </p>
             <p className="mt-2.5 flex items-center gap-2 text-[12px] text-ink-muted">
-              <span className="h-2 w-2 rounded-full bg-pine ring-[1.5px] ring-plate" />
-              Point at a city for details, click for the full story
+              <span className="h-2.5 w-2.5 rounded-full bg-pine ring-2 ring-plate" />
+              Hover over a city to see what I did there
+            </p>
+            <p className="mt-1.5 flex items-center gap-2 text-[12px] text-ink-muted">
+              <span className="h-2.5 w-2.5 border border-[#CBBD9C]" style={{ background: LAND_VISITED }} />
+              Countries I&apos;ve lived in
             </p>
           </div>
 
@@ -193,7 +228,7 @@ export default function Atlas() {
         </div>
 
         <figcaption className="mt-4 font-mono text-[11px] text-ink-faint md:hidden">
-          Places lived and worked, 2021 – 2026. Tap a marker or a place below.
+          Every place I've lived and worked since 2021. Tap a city, or pick one from the list below.
         </figcaption>
       </figure>
 
@@ -273,19 +308,21 @@ function Marker({
         onFocus={(e) => e.currentTarget.matches(":focus-visible") && onOpen()}
         onBlur={onLeave}
         onClick={onSelect}
-        className="group absolute grid h-7 w-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-full"
+        className="group absolute grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-full"
       >
         <span
-          className={`block rounded-full bg-pine ring-[1.5px] ring-plate transition-all duration-150 ${
+          className={`block rounded-full bg-pine ring-2 ring-plate shadow-[0_1px_3px_rgba(31,27,22,0.35)] transition-all duration-150 ${
             active
-              ? "h-3 w-3 shadow-[0_0_0_5px_rgba(168,131,76,0.35)]"
-              : "h-2 w-2 group-hover:h-2.5 group-hover:w-2.5"
+              ? "h-[13px] w-[13px] shadow-[0_0_0_6px_rgba(168,131,76,0.35)] md:h-4 md:w-4"
+              : rolesByPlace.has(pin.id)
+                ? "h-[9px] w-[9px] group-hover:scale-125 md:h-[13px] md:w-[13px]"
+                : "h-[7px] w-[7px] group-hover:scale-125 md:h-[10px] md:w-[10px]"
           }`}
         />
         {/* the city name is part of the hover target */}
         <span
           className={`absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap px-1 py-1.5 font-display text-[13px] leading-none transition-colors md:block ${
-            pin.labelSide === "left" ? "right-[calc(50%+6px)]" : "left-[calc(50%+6px)]"
+            pin.labelSide === "left" ? "right-[calc(50%+8px)]" : "left-[calc(50%+8px)]"
           } ${active ? "text-pine" : "text-ink/80 group-hover:text-pine"}`}
         >
           {pin.city}
