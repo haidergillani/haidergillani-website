@@ -31,17 +31,22 @@ export default function Home() {
               {profile.intro}
             </p>
           </div>
-          <div className="border border-ink/20 bg-plate p-1.5 outline outline-1 outline-offset-[5px] outline-ink/10 md:w-[18rem] lg:w-[20rem]">
-            <Image
-              src={profile.photo.src}
-              width={profile.photo.width}
-              height={profile.photo.height}
-              alt={profile.photo.alt}
-              priority
-              sizes="(min-width: 1024px) 20rem, (min-width: 768px) 18rem, 100vw"
-              className="aspect-[4/3] w-full object-cover object-[50%_25%] md:aspect-[4/5]"
-            />
-          </div>
+          <figure className="md:w-[18rem] lg:w-[20rem]">
+            <div className="border border-ink/20 bg-plate p-1.5 outline outline-1 outline-offset-[5px] outline-ink/10">
+              <Image
+                src={profile.photo.src}
+                width={profile.photo.width}
+                height={profile.photo.height}
+                alt={profile.photo.alt}
+                priority
+                sizes="(min-width: 1024px) 20rem, (min-width: 768px) 18rem, 100vw"
+                className="aspect-[4/3] w-full object-cover object-[50%_25%] md:aspect-[4/5]"
+              />
+            </div>
+            <figcaption className="mt-3 font-mono text-[11px] text-ink-faint">
+              {profile.photo.caption}
+            </figcaption>
+          </figure>
         </section>
 
         <Atlas />

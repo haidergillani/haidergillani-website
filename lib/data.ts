@@ -21,7 +21,8 @@ export const profile = {
     src: "/photos/speaking.jpg",
     width: 1087,
     height: 1359,
-    alt: "Haider Gillani presenting StarcAI to an audience, microphone in hand",
+    alt: "Haider Gillani presenting StarcAI at SF Tech Week, microphone in hand",
+    caption: "Presenting StarcAI at SF Tech Week",
   },
   links: {
     linkedin: "https://www.linkedin.com/in/haidergillaniii",
@@ -150,8 +151,8 @@ export const roles: Role[] = [
       src: "/photos/speaking.jpg",
       width: 1087,
       height: 1359,
-      alt: "Haider Gillani presenting StarcAI, microphone in hand",
-      caption: "Presenting StarcAI",
+      alt: "Haider Gillani presenting StarcAI at SF Tech Week, microphone in hand",
+      caption: "Presenting StarcAI at SF Tech Week",
     },
   },
   {
