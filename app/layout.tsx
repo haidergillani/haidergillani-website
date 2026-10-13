@@ -84,11 +84,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/favicon.ico?v=2", sizes: "48x48" },
+      { url: "/icon.svg?v=2", type: "image/svg+xml" },
+      { url: "/icon-192.png?v=2", type: "image/png", sizes: "192x192" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.png?v=2",
   },
   manifest: "/site.webmanifest",
 };
