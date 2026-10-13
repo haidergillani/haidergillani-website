@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://haidergillani.com/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://haidergillani.com/photos/speaking.jpg</image:loc>
+      <image:title>Haider Gillani presenting StarcAI</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haidergillani.com/photos/un-security-council.jpg</image:loc>
+      <image:title>Haider Gillani at Pakistan's seat in the UN Security Council chamber</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haidergillani.com/photos/ces-hp.jpg</image:loc>
+      <image:title>Haider Gillani with HP at CES</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haidergillani.com/photos/ces-shark-tank.jpg</image:loc>
+      <image:title>Haider Gillani at Shark Tank, CES</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://haidergillani.com/Haider-Gillani-Resume.pdf</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

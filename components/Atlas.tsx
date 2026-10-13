@@ -31,9 +31,9 @@ const visited = new Set(places.map((p) => p.countryCode));
 
 // Land tones: countries I've lived in are a shade deeper; the one under the
 // pointer turns sage, a quiet tint of the pine accent.
-const LAND = "#EDE6D5";
-const LAND_VISITED = "#E1D3B3";
-const LAND_ACTIVE = "#C6CEBB";
+const LAND = "#EFE9DB";
+const LAND_VISITED = "#D2BC8E";
+const LAND_ACTIVE = "#A9BBA3";
 
 type Pin = Place & { left: number; top: number };
 
@@ -248,9 +248,6 @@ export default function Atlas() {
       <div className="mt-14 grid gap-6 md:grid-cols-[13rem_1fr] md:gap-10">
         <div>
           <h2 className="font-display text-[22px] leading-tight">Index of places</h2>
-          <p className="mt-1.5 text-[14px] text-ink-muted">
-            West to east, the way you read the map.
-          </p>
         </div>
         <ol className="sm:columns-2 sm:gap-10">
           {places.map((p) => (

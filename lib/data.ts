@@ -12,16 +12,16 @@ export const profile = {
     { orgId: "miq", label: "Founder, miQ" },
   ] as const,
   intro:
-    "I'm an AI engineer. At HP I lead AI engineering for our scanning products, and on my own time I'm building miQ, which turns the phones already in a room into microphones. I studied at Minerva University, which moves its students to a new city every few months, and I made a habit of finding real work in each one. The map below is where that took me.",
+    "I'm an AI engineer from Pakistan. At HP I lead AI engineering for our scanning products, and on my own time I'm building miQ, which turns the phones already in a room into microphones. I studied at Minerva University, which moves its students to a new city every few months, and I made a habit of finding real work in each one. The map below is where that took me.",
   description:
-    "AI engineer at HP and founder of miQ. A map of the places I've lived and worked since 2021.",
+    "Haider Gillani is an AI engineer from Pakistan, AI Engineering Lead at HP and founder of miQ. A map of where he has lived and built, from San Francisco to Seoul.",
   email: "haidergillani@uni.minerva.edu",
   resume: "/Haider-Gillani-Resume.pdf",
   photo: {
     src: "/photos/speaking.jpg",
     width: 1087,
     height: 1359,
-    alt: "Haider Gillani speaking to an audience, microphone in hand",
+    alt: "Haider Gillani presenting StarcAI to an audience, microphone in hand",
   },
   links: {
     linkedin: "https://www.linkedin.com/in/haidergillaniii",
@@ -46,10 +46,16 @@ export const orgs = {
   nohq: { name: "NO HQ", logo: "/logos/nohq.png", fit: "cover" },
   uai: { name: "Universidad Abierta Interamericana", logo: "/logos/uai.png", fit: "cover" },
   tdda: { name: "Taiwan Digital Diplomacy Association", logo: "/logos/tdda.png" },
-  kakao: { name: "Kakao Ventures", logo: "/logos/kakao-ventures.png" },
-  vibemap: { name: "Vibemap", logo: "/logos/vibemap.svg" },
+  kakao: { name: "Kakao Ventures", logo: "/logos/kakao-ventures.png", fit: "cover" },
+  vibemap: { name: "Vibemap", logo: "/logos/vibemap.png", fit: "cover" },
   minerva: { name: "Minerva University", logo: "/logos/minerva.png" },
   cch: { name: "Cadet College Hasanabdal", logo: "/logos/cadet-college-hasanabdal.png" },
+  gytf: { name: "Global Youth Trends Forum", logo: "/logos/gytf.png", fit: "cover" },
+  pkedu: {
+    name: "Ministry of Federal Education and Professional Training, Pakistan",
+    logo: "/logos/pakistan-education.png",
+    fit: "cover",
+  },
 } satisfies Record<string, Org>;
 
 export type OrgId = keyof typeof orgs;
@@ -87,6 +93,13 @@ export const roles: Role[] = [
     place: "Remote · pilots in Portland–Vancouver",
     placeId: "vancouver",
     body: "Every Q&A has the same pause while a microphone travels across the room. miQ removes it by turning the audience's own phones into wireless mics, with nothing to rent and no AV crew to hire. The hard part was the audio. I built a WebRTC pipeline lean enough that a thousand-person event can run over ordinary venue Wi-Fi for less than a dollar. We've run it at five events of about a hundred people each, with live transcription during the event and a summary waiting afterwards.",
+    photo: {
+      src: "/photos/ces-shark-tank.jpg",
+      width: 1200,
+      height: 1600,
+      alt: "Haider Gillani pointing to the Shark Tank sign at CES",
+      caption: "Shark Tank at CES, Las Vegas",
+    },
   },
   {
     id: "hp",
@@ -102,7 +115,7 @@ export const roles: Role[] = [
       src: "/photos/ces-hp.jpg",
       width: 1200,
       height: 1600,
-      alt: "Haider standing beside a large HP logo at CES, holding his HP staff badge",
+      alt: "Haider Gillani beside a large HP logo at CES, holding his HP staff badge",
       caption: "At CES with HP, Las Vegas",
     },
   },
@@ -115,6 +128,13 @@ export const roles: Role[] = [
     place: "New York",
     placeId: "new-york",
     body: "Pakistan sits on the Security Council for 2025–26, and I spent the summer with its delegation in New York. The diplomatic work came first: following sessions and keeping track of where every country stood. Alongside it I built an agentic workflow on top of UN records that helps delegates and Permanent Representatives prepare, condense their notes and draft communications. I also built pipelines that follow each country's positions from one session to the next, on issues from the global economy to weapons of mass destruction, for Pakistan's Ministry of Foreign Affairs.",
+    photo: {
+      src: "/photos/un-security-council.jpg",
+      width: 738,
+      height: 984,
+      alt: "Haider Gillani speaking from Pakistan's seat in the UN Security Council chamber",
+      caption: "At Pakistan's seat in the Security Council chamber",
+    },
   },
   {
     id: "starcai",
@@ -126,6 +146,13 @@ export const roles: Role[] = [
     place: "San Francisco",
     placeId: "san-francisco",
     body: "The same quarterly results can read as a warning or as confidence, depending on how they're written. StarcAI rewrote public companies' investor communications so they landed the way they were meant to. I trained a six-dimension sentiment model, measuring things like investor confidence and the likelihood of investing, on more than 10,000 annotated reports and 10-K filings, and built the product in React and Next.js. A rewrite is worthless if it changes the facts, so every output was checked against its source with topic modeling and semantic similarity, and the model was tuned with RLHF to keep it honest.",
+    photo: {
+      src: "/photos/speaking.jpg",
+      width: 1087,
+      height: 1359,
+      alt: "Haider Gillani presenting StarcAI, microphone in hand",
+      caption: "Presenting StarcAI",
+    },
   },
   {
     id: "nohq",
@@ -353,21 +380,25 @@ export const projects: Project[] = [
   },
 ];
 
-export const recognition: { what: string; detail: string }[] = [
+export const recognition: { orgId: OrgId; what: string; detail: string }[] = [
   {
+    orgId: "hp",
     what: "Future of Print award, HP",
     detail: "From HP President Anneliese Olson.",
   },
   {
+    orgId: "hp",
     what: "AI Native Thinker award, HP",
     detail: "From HP President Anneliese Olson.",
   },
   {
+    orgId: "gytf",
     what: "Speaker, Global Youth Trends Forum, Taiwan, 2022",
     detail:
       "Led sessions on AI and large language models for business at a four-day forum alongside Stan Shih, Audrey Tang and people from more than 30 countries.",
   },
   {
+    orgId: "pkedu",
     what: "5th in Pakistan's national exams, 2021",
     detail: "Out of roughly 200,000 students.",
   },

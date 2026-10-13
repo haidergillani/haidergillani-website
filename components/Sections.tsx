@@ -123,9 +123,12 @@ export function Background() {
         <SectionHead title="Recognition" />
         <ul>
           {recognition.map((r) => (
-            <li key={r.what} className="border-b border-ink/10 py-5">
-              <p className="font-display text-[18px] leading-snug">{r.what}</p>
-              <p className="mt-1 text-[15px] leading-relaxed text-ink-muted">{r.detail}</p>
+            <li key={r.what} className="flex gap-4 border-b border-ink/10 py-5">
+              <OrgLogo id={r.orgId} size={40} className="mt-0.5" />
+              <div className="min-w-0 flex-1">
+                <p className="font-display text-[18px] leading-snug">{r.what}</p>
+                <p className="mt-1 text-[15px] leading-relaxed text-ink-muted">{r.detail}</p>
+              </div>
             </li>
           ))}
         </ul>
