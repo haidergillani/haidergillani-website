@@ -43,9 +43,6 @@ export default function Home() {
                 className="aspect-[4/3] w-full object-cover object-[50%_25%] md:aspect-[4/5]"
               />
             </div>
-            <figcaption className="mt-3 font-mono text-[11px] text-ink-faint">
-              {profile.photo.caption}
-            </figcaption>
           </figure>
         </section>
 
@@ -56,8 +53,10 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="mx-auto flex max-w-plate justify-between gap-6 border-t border-ink/15 px-4 py-6 font-mono text-[11px] text-ink-faint sm:px-6">
-        <span>© {new Date().getFullYear()} {profile.name}</span>
+      <footer className="mx-auto flex max-w-plate flex-wrap justify-between gap-x-6 gap-y-2 border-t border-ink/15 px-4 py-6 font-mono text-[11px] text-ink-faint sm:px-6">
+        <span>
+          © {new Date().getFullYear()} {profile.name}. Designed and built from wherever I happen to be.
+        </span>
         <span>Map data: Natural Earth</span>
       </footer>
     </>

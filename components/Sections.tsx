@@ -68,7 +68,7 @@ export function Work() {
                   />
                 </div>
                 {r.photo.caption && (
-                  <figcaption className="mt-2 font-mono text-[11px] text-ink-faint">
+                  <figcaption className="mt-2 text-center font-mono text-[11px] text-ink-faint">
                     {r.photo.caption}
                   </figcaption>
                 )}

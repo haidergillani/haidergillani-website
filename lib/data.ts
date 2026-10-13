@@ -12,7 +12,7 @@ export const profile = {
     { orgId: "miq", label: "Founder, miQ" },
   ] as const,
   intro:
-    "I'm an AI engineer from Pakistan. At HP I lead AI engineering for our scanning products, and on my own time I'm building miQ, which turns the phones already in a room into microphones. I studied at Minerva University, which moves its students to a new city every few months, and I made a habit of finding real work in each one. The map below is where that took me.",
+    "I'm an AI engineer from Pakistan. I lead AI engineering for HP's scanning products, and in the hours left over I'm building miQ, which turns the phones already in a room into its microphones. Minerva University kept me moving, to a new city every few months for four years, and in each one I went looking for real work. The map below is where that led.",
   description:
     "Haider Gillani is an AI engineer from Pakistan, AI Engineering Lead at HP and founder of miQ. A map of where he has lived and built, from San Francisco to Seoul.",
   email: "haidergillani@uni.minerva.edu",
@@ -22,7 +22,6 @@ export const profile = {
     width: 1087,
     height: 1359,
     alt: "Haider Gillani presenting StarcAI at SF Tech Week, microphone in hand",
-    caption: "Presenting StarcAI at SF Tech Week",
   },
   links: {
     linkedin: "https://www.linkedin.com/in/haidergillaniii",
@@ -95,7 +94,7 @@ export const roles: Role[] = [
     placeId: "vancouver",
     body: "Every Q&A has the same pause while a microphone travels across the room. miQ removes it by turning the audience's own phones into wireless mics, with nothing to rent and no AV crew to hire. The hard part was the audio. I built a WebRTC pipeline lean enough that a thousand-person event can run over ordinary venue Wi-Fi for less than a dollar. We've run it at five events of about a hundred people each, with live transcription during the event and a summary waiting afterwards.",
     photo: {
-      src: "/photos/ces-shark-tank.jpg",
+      src: "/photos/shark-tank-ces.jpg",
       width: 1200,
       height: 1600,
       alt: "Haider Gillani pointing to the Shark Tank sign at CES",
