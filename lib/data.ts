@@ -1,322 +1,270 @@
 /**
- * Single source of truth for all site content.
- * Everything on the page is driven from this file — edit here to update the site.
- *
- * Content sourced from Haider's master + AI résumés. Verify + edit freely.
+ * All site content lives here. Edit this file to update the site.
+ * Source: Haider's 2026 AI résumé, with older details from the master résumé.
  */
-
-export type Highlight = {
-  org: string;
-  role: string;
-  url?: string;
-  note?: string;
-};
-
-export type Location = {
-  id: string;
-  city: string;
-  country: string;
-  flag: string;
-  /** [longitude, latitude] */
-  coordinates: [number, number];
-  /** short label shown as the pin's headline */
-  chapter: string;
-  years?: string;
-  blurb: string;
-  highlights: Highlight[];
-  /** anchor pins that get a slightly larger dot / priority label */
-  featured?: boolean;
-};
 
 export const profile = {
   name: "Haider Gillani",
-  initials: "HG",
   role: "AI Engineer",
-  tagline:
-    "Bridging the gap between technology and human sustenance — one city at a time.",
-  location: "San Francisco, California",
-  summary:
-    "AI Engineer at HP and founder of StarcAI. A Computational Sciences (AI & ML) and Strategic Finance graduate of Minerva University — the college with no single campus — I spent four years living and building across seven countries on four continents, from a UN mission in New York to digital-diplomacy work in Taipei. This map is where it all happened.",
+  now: ["AI Engineering Lead, HP", "Founder, miQ"],
+  intro:
+    "I'm an AI engineer. I lead AI engineering on HP's scanning products and I'm building miQ, a way to turn phones into wireless microphones for live events. Studying at Minerva University meant living in seven countries in four years. The map shows where, and what I worked on in each place.",
+  description:
+    "AI engineer leading AI engineering on HP's scanning products and building miQ. Places lived and worked, 2021–2026.",
   email: "haidergillani@uni.minerva.edu",
-  socials: {
+  links: {
+    linkedin: "https://www.linkedin.com/in/haidergillaniii",
     github: "https://github.com/haidergillani",
-    linkedin: "https://www.linkedin.com/in/haider-gillani-b87b90210/",
-    instagram: "https://www.instagram.com/haidergillaniii/",
   },
 };
 
-export const locations: Location[] = [
+export type Role = {
+  id: string;
+  org: string;
+  url?: string;
+  title: string;
+  period: string;
+  place: string;
+  placeId: string;
+  body: string;
+};
+
+/** Most recent first. */
+export const roles: Role[] = [
+  {
+    id: "miq",
+    org: "miQ",
+    url: "https://trymiq.com",
+    title: "Founder and full-stack engineer",
+    period: "2026 – now",
+    place: "Remote · pilots in Portland–Vancouver",
+    placeId: "vancouver",
+    body: "miQ turns attendees' phones into wireless microphones, with no hardware to rent and no AV installer. I designed the real-time audio path on WebRTC so that a 1,000-person event can run over ordinary venue Wi-Fi for under a dollar. We've run it at five events of about a hundred people each, with live transcription and an AI summary afterwards.",
+  },
+  {
+    id: "hp",
+    org: "HP",
+    url: "https://www.hp.com",
+    title: "AI Engineering Lead, HP AI",
+    period: "2024 – now",
+    place: "Vancouver, WA",
+    placeId: "vancouver",
+    body: "I built and launched HP's first two HP AI features, Precise Scan and Scan to Email Summary, working as both engineer and technical PM from first prototype through customer testing to the US launch. I created the HP AI subscription bundle, which reaches about a million small-business users a month, has handled more than 100 million scans, and cut scan time in half. I also built a knowledge base of scanned business documents that customers can query through HP AI, with OCR-driven routing and data extraction on Claude, TensorFlow and AWS Bedrock.",
+  },
+  {
+    id: "un",
+    org: "Pakistan Mission to the United Nations",
+    title: "Diplomat intern and AI engineer",
+    period: "Summer 2025",
+    place: "New York",
+    placeId: "new-york",
+    body: "I sat with Pakistan's delegation on the Security Council. Alongside the diplomatic work, I built an agentic workflow that pulls from UN records to help delegates and Permanent Representatives plan, condense meeting notes and draft communications. I also built pipelines that track each country's stated positions across Council sessions, on issues from the global economy to weapons of mass destruction, for Pakistan's Ministry of Foreign Affairs.",
+  },
+  {
+    id: "starcai",
+    org: "StarcAI",
+    title: "Co-founder, AI and full-stack engineering",
+    period: "2023 – 2025",
+    place: "San Francisco",
+    placeId: "san-francisco",
+    body: "StarcAI adjusted the tone of companies' investor communications. I trained a six-dimension sentiment model, covering signals like investor confidence and investment likelihood, on more than 10,000 annotated reports and 10-K filings, and built the web app in React and Next.js. To keep the rewrites faithful, we checked them against the source with topic modeling and semantic similarity and tuned the model with RLHF.",
+  },
+  {
+    id: "nohq",
+    org: "NO HQ",
+    title: "Lead AI engineer",
+    period: "2023 – 2024",
+    place: "London",
+    placeId: "london",
+    body: "I built NO HQ's booking app on the MERN stack for workspaces at more than 400 locations across the UK and Europe, and a ranking model on Airflow that matched companies to spaces by price, schedule, location and team size.",
+  },
+  {
+    id: "tdda",
+    org: "Taiwan Digital Diplomacy Association",
+    title: "AI/ML intern",
+    period: "Fall 2022",
+    place: "Taipei",
+    placeId: "taipei",
+    body: "I led three engineers studying how the war in Ukraine was communicated online. We collected more than 200,000 posts from Facebook, TikTok and Twitter with Spark pipelines, then used topic modeling and sentiment analysis to measure how messages from President Zelenskyy and Ukraine's foreign ministry landed with audiences at home and abroad.",
+  },
+  {
+    id: "kakao",
+    org: "Kakao Ventures",
+    title: "Software engineering team lead",
+    period: "Spring 2022",
+    place: "Seoul",
+    placeId: "seoul",
+    body: "My team studied echo chambers in Facebook's feed by running topic modeling and sentiment analysis over 100,000 posts. We proposed an unsupervised genetic algorithm for recommending posts that would reduce polarization, and presented it to reviewers from more than 75 countries.",
+  },
+];
+
+export type Place = {
+  id: string;
+  city: string;
+  country: string;
+  /** [longitude, latitude] */
+  coords: [number, number];
+  /** which side of the marker the map label sits on */
+  labelSide: "left" | "right";
+  /** one line for the map callout */
+  note: string;
+  /** a few words for the index */
+  index: string;
+};
+
+/** Sorted west to east, the order you read the map. */
+export const places: Place[] = [
+  {
+    id: "vancouver",
+    city: "Vancouver, WA",
+    country: "United States",
+    coords: [-122.6615, 45.6387],
+    labelSide: "left",
+    note: "With HP since 2024. miQ's first pilots ran in the Portland–Vancouver area.",
+    index: "HP, miQ",
+  },
   {
     id: "san-francisco",
     city: "San Francisco",
     country: "United States",
-    flag: "🇺🇸",
-    coordinates: [-122.4194, 37.7749],
-    chapter: "Home base · Silicon Valley",
-    years: "2021 – present",
-    blurb:
-      "Where the journey began and where it returns. First-year Minerva city, the home of StarcAI, and the launchpad for what comes next.",
-    featured: true,
-    highlights: [
-      {
-        org: "Google",
-        role: "Data Science Intern · Google Cloud, Sunnyvale",
-        url: "https://cloud.google.com",
-        note: "Summer 2026",
-      },
-      {
-        org: "StarcAI",
-        role: "CEO & Co-Founder — AI for financial communications",
-        url: "https://github.com/haidergillani",
-      },
-      { org: "iD Tech", role: "AI & Python Instructor", url: "https://www.idtech.com" },
-      {
-        org: "Minerva University",
-        role: "B.Sc. Computational Sciences & Strategic Finance",
-        url: "https://www.minerva.edu",
-      },
-    ],
+    coords: [-122.4194, 37.7749],
+    labelSide: "left",
+    note: "First year at Minerva, 2021. Co-founded StarcAI here in 2023.",
+    index: "Minerva, StarcAI",
   },
   {
     id: "new-york",
     city: "New York",
     country: "United States",
-    flag: "🇺🇸",
-    coordinates: [-74.006, 40.7128],
-    chapter: "Diplomacy meets AI",
-    years: "2025",
-    blurb:
-      "A summer inside the United Nations Security Council — representing Pakistan's delegation and building agentic AI to give diplomats their time back.",
-    featured: true,
-    highlights: [
-      {
-        org: "United Nations",
-        role: "Diplomat Intern & AI Engineer — Pakistan Mission to the UN",
-        note: "Jun – Sep 2025",
-      },
-    ],
-  },
-  {
-    id: "vancouver",
-    city: "Vancouver, WA",
-    country: "United States",
-    flag: "🇺🇸",
-    coordinates: [-122.6615, 45.6387],
-    chapter: "Enterprise AI at scale",
-    years: "2024 – present",
-    blurb:
-      "Shipping AI features to a million-plus users a month at HP — where research turns into production at real scale.",
-    featured: true,
-    highlights: [
-      {
-        org: "HP Inc.",
-        role: "AI Engineer & Technical PM — HP AI",
-        url: "https://www.hp.com",
-        note: "~100M+ scan jobs / mo",
-      },
-    ],
-  },
-  {
-    id: "seoul",
-    city: "Seoul",
-    country: "South Korea",
-    flag: "🇰🇷",
-    coordinates: [126.978, 37.5665],
-    chapter: "Minerva semester",
-    blurb:
-      "Inside Korea's tech ecosystem — venture capital, algorithmic research on social polarization, and curating ideas worth spreading.",
-    featured: true,
-    highlights: [
-      { org: "Kakao Ventures", role: "SWE Team Lead — social-graph analysis", url: "https://www.kakao.vc" },
-      { org: "TEDxSeoul", role: "Curator — speaker training & review" },
-      { org: "Samsung", role: "AI Forum contributor", url: "https://www.samsung.com" },
-    ],
-  },
-  {
-    id: "taipei",
-    city: "Taipei",
-    country: "Taiwan",
-    flag: "🇹🇼",
-    coordinates: [121.5654, 25.033],
-    chapter: "Minerva semester",
-    blurb:
-      "Civic-tech and digital diplomacy at the world's semiconductor capital — and a seat at the table with the people shaping it.",
-    featured: true,
-    highlights: [
-      {
-        org: "Taiwan Digital Diplomacy × Meta",
-        role: "AI/ML Intern — War-in-Ukraine analysis",
-        note: "200k+ posts",
-      },
-      {
-        org: "Global Youth Forum",
-        role: "Student speaker — with Stan Shih & Audrey Tang",
-      },
-      { org: "TSMC", role: "Valuation & financial case study", url: "https://www.tsmc.com" },
-    ],
-  },
-  {
-    id: "hyderabad",
-    city: "Hyderabad",
-    country: "India",
-    flag: "🇮🇳",
-    coordinates: [78.4867, 17.385],
-    chapter: "Minerva semester",
-    blurb:
-      "Machine learning against a real crisis — optimizing COVID-19 vaccine distribution to reach far more people, faster.",
-    highlights: [
-      {
-        org: "Vaccine Distribution",
-        role: "Genetic & greedy algorithms · SIR modeling",
-        url: "https://github.com/haidergillani",
-        note: "+45% reach",
-      },
-    ],
+    coords: [-74.006, 40.7128],
+    labelSide: "right",
+    note: "Summer 2025 with Pakistan's delegation to the UN Security Council.",
+    index: "United Nations",
   },
   {
     id: "buenos-aires",
     city: "Buenos Aires",
     country: "Argentina",
-    flag: "🇦🇷",
-    coordinates: [-58.3816, -34.6037],
-    chapter: "Minerva semester",
-    blurb:
-      "A South-American chapter on global systems, governance, and the economics of emerging markets.",
-    highlights: [
-      { org: "Minerva University", role: "Complex systems & global governance", url: "https://www.minerva.edu" },
-    ],
-  },
-  {
-    id: "berlin",
-    city: "Berlin",
-    country: "Germany",
-    flag: "🇩🇪",
-    coordinates: [13.405, 52.52],
-    chapter: "Minerva semester",
-    blurb:
-      "Europe's startup capital — sustainability, design thinking, and the politics of technology up close.",
-    highlights: [
-      { org: "Minerva University", role: "Sustainability & design thinking", url: "https://www.minerva.edu" },
-    ],
+    coords: [-58.3816, -34.6037],
+    labelSide: "right",
+    note: "A Minerva semester.",
+    index: "Minerva semester",
   },
   {
     id: "london",
     city: "London",
     country: "United Kingdom",
-    flag: "🇬🇧",
-    coordinates: [-0.1276, 51.5072],
-    chapter: "Minerva semester",
-    blurb:
-      "Where finance meets product. Led AI and strategy for NO HQ, matching businesses to workspaces across Europe.",
-    highlights: [
-      {
-        org: "NO HQ for Business",
-        role: "Lead AI Engineer & Business Strategy",
-        note: "400+ locations",
-      },
-    ],
+    coords: [-0.1276, 51.5072],
+    labelSide: "left",
+    note: "A Minerva semester, and AI engineering for NO HQ.",
+    index: "Minerva, NO HQ",
+  },
+  {
+    id: "berlin",
+    city: "Berlin",
+    country: "Germany",
+    coords: [13.405, 52.52],
+    labelSide: "right",
+    note: "A Minerva semester.",
+    index: "Minerva semester",
   },
   {
     id: "islamabad",
     city: "Islamabad",
     country: "Pakistan",
-    flag: "🇵🇰",
-    coordinates: [73.0479, 33.6844],
-    chapter: "Where it started",
-    blurb:
-      "Home. Where the curiosity was formed — national exams, early ventures, and the leap to a university spread across the world.",
-    featured: true,
-    highlights: [
-      { org: "Cadet College Hasanabdal", role: "Top 5 nationwide · ~200k students" },
-      { org: "Early ventures", role: "Finance & business consulting" },
-    ],
+    coords: [73.0479, 33.6844],
+    labelSide: "left",
+    note: "Home. Finished school at Cadet College Hasanabdal in 2021.",
+    index: "Home",
+  },
+  {
+    id: "hyderabad",
+    city: "Hyderabad",
+    country: "India",
+    coords: [78.4867, 17.385],
+    labelSide: "right",
+    note: "A Minerva semester.",
+    index: "Minerva semester",
+  },
+  {
+    id: "taipei",
+    city: "Taipei",
+    country: "Taiwan",
+    coords: [121.5654, 25.033],
+    labelSide: "right",
+    note: "Fall 2022. Studied wartime social media for the Taiwan Digital Diplomacy Association and spoke at the Global Youth Forum.",
+    index: "TDDA, Global Youth Forum",
+  },
+  {
+    id: "seoul",
+    city: "Seoul",
+    country: "South Korea",
+    coords: [126.978, 37.5665],
+    labelSide: "right",
+    note: "Spring 2022. Led a software team at Kakao Ventures.",
+    index: "Kakao Ventures",
   },
 ];
 
 export type Project = {
   name: string;
-  tag: string;
-  description: string;
-  stack: string[];
-  url: string;
-  metric?: string;
+  year: string;
+  body: string;
 };
 
 export const projects: Project[] = [
   {
-    name: "StarcAI",
-    tag: "Founder · FinTech AI",
-    description:
-      "AI that rewrites corporate financial communications for optimism, confidence, and trust — a 6-scale sentiment model fine-tuned on annotated financial text, deployed as a full-stack SaaS.",
-    stack: ["FinBERT", "NLP", "NVIDIA CUDA", "Next.js", "PostgreSQL"],
-    url: "https://github.com/haidergillani",
-    metric: "+31% investor confidence",
-  },
-  {
-    name: "HP AI — Scan to Email",
-    tag: "AI Engineer · HP",
-    description:
-      "AI features shipping to a million-plus monthly SMB and home users — auto-routing and summarizing documents into a queryable knowledge base at global scale.",
-    stack: ["TensorFlow", "AWS Bedrock", "LLMs", "MLOps"],
-    url: "https://www.hp.com",
-    metric: "~100M+ scan jobs / month",
-  },
-  {
-    name: "War-in-Ukraine Analysis",
-    tag: "Research · Meta × TDDA",
-    description:
-      "Led three engineers analyzing 200,000+ wartime social posts — including President Zelenskyy's — to map how leadership sustains public morale, informing Taiwan's digital-diplomacy playbook.",
-    stack: ["NLP", "Apache Spark", "NVIDIA CUDA", "Python"],
-    url: "https://github.com/haidergillani",
-    metric: "1M+ people reached",
-  },
-  {
-    name: "UN Agentic AI Workflow",
-    tag: "Pakistan Mission to the UN",
-    description:
-      "A one-step agentic workflow with chain-of-thought reasoning that extracts and structures Security Council proceedings into decision-ready briefings for the Ministry of Foreign Affairs.",
-    stack: ["Agents", "LLMs", "ML Pipelines", "RAG"],
-    url: "https://github.com/haidergillani",
-  },
-  {
     name: "StockAI",
-    tag: "Founder · Quant AI",
-    description:
-      "A stock-prediction and research engine — a Bayesian neural network trained on 20 years of data across company, industry, and market-sentiment layers using FinBERT and GPT-4.",
-    stack: ["Bayesian NN", "Vertex AI", "TensorFlow", "GPT-4"],
-    url: "https://github.com/haidergillani",
+    year: "2023",
+    body: "A stock research tool built on a Bayesian neural network, trained on twenty years of Apple and Google data across company, industry and market-sentiment signals.",
   },
   {
-    name: "NO HQ — Workspace Copilot",
-    tag: "Lead AI Engineer",
-    description:
-      "A MERN platform matching SMEs to workspaces across 400+ European locations, ranking options with an AI algorithm on Airflow and a fine-tuned LLM sales assistant.",
-    stack: ["MERN", "OpenAI API", "Airflow", "React"],
-    url: "https://github.com/haidergillani",
-    metric: "400+ locations",
+    name: "Fitter",
+    year: "2024",
+    body: "A 3D fit preview for buying clothes online. It measures the body from a phone's LiDAR scan and strips facial and skin data from the model.",
+  },
+  {
+    name: "Recall",
+    year: "2022",
+    body: "An Android and iOS app that sounds an alarm on a lost phone and sends back its location by text message, even with mobile data and location turned off.",
+  },
+  {
+    name: "Vaccine distribution model",
+    year: "2022",
+    body: "Genetic and greedy algorithms for allocating COVID-19 vaccines across Uttar Pradesh. In SIR simulations the plan reached 45% more people than the existing distribution.",
   },
 ];
 
-/** Compact "also built" line under the featured projects. */
-export const alsoBuilt: string[] = [
-  "Fitter — 3D try-on with LIDAR (−70% returns)",
-  "Recall — remote SOS for lost phones",
-  "e-connect — de-polarizing social feeds",
-  "COVID vaccine distribution optimizer",
+export const recognition: { what: string; detail: string }[] = [
+  {
+    what: "Future of Print award, HP",
+    detail: "Presented by HP President Anneliese Olson.",
+  },
+  {
+    what: "AI Native Thinker award, HP",
+    detail: "Presented by HP President Anneliese Olson.",
+  },
+  {
+    what: "Speaker, Global Youth Forum, Taiwan, 2022",
+    detail:
+      "Led seminars on AI and LLMs for business at a four-day forum with Stan Shih, Audrey Tang and participants from 30+ countries.",
+  },
+  {
+    what: "5th nationwide, Pakistan's national exams, 2021",
+    detail: "Out of roughly 200,000 students.",
+  },
 ];
 
-/** Logos wall — the names encountered along the way. */
-export const companies: string[] = [
-  "HP",
-  "Google",
-  "NVIDIA",
-  "Meta",
-  "Samsung",
-  "TSMC",
-  "Kakao Ventures",
-  "United Nations",
-  "iD Tech",
-  "Minerva University",
-  "Taiwan Digital Diplomacy Assoc.",
-  "Pakistan Mission to the UN",
+export const education: { school: string; detail: string; year: string }[] = [
+  {
+    school: "Minerva University",
+    detail:
+      "B.Sc. Computational Sciences (AI & ML) and Business (Strategic Finance). Classes and work placements in San Francisco, Seoul, Hyderabad, Berlin, Buenos Aires, London and Taipei.",
+    year: "2025",
+  },
+  {
+    school: "Cadet College Hasanabdal",
+    detail: "Higher secondary school, Pakistan.",
+    year: "2021",
+  },
 ];

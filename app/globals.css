@@ -10,60 +10,43 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
-  background-color: #f7f2e7;
-  color: #211c15;
+  background-color: #f6f1e7;
+  color: #1f1b16;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga";
 }
 
 ::selection {
-  background: rgba(37, 92, 74, 0.18);
-  color: #1a4335;
+  background: rgba(35, 87, 74, 0.16);
 }
 
-/* warm paper background — soft radial warmth + faint vignette */
-.bg-paper {
-  background:
-    radial-gradient(1100px 620px at 50% -8%, rgba(255, 252, 245, 0.9), transparent 60%),
-    radial-gradient(900px 520px at 88% 6%, rgba(176, 141, 87, 0.06), transparent 55%),
-    #f7f2e7;
+:focus-visible {
+  outline: 2px solid #23574a;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-/* subtle paper grain */
-.grain::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.04;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+/* figures line up in dates and coordinates */
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
-/* thin custom scrollbar */
-::-webkit-scrollbar {
-  width: 11px;
+/* links in running text */
+.link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: rgba(35, 87, 74, 0.35);
+  transition: text-decoration-color 150ms;
 }
-::-webkit-scrollbar-track {
-  background: #f1e8d5;
-}
-::-webkit-scrollbar-thumb {
-  background: #d8c9a9;
-  border-radius: 999px;
-  border: 3px solid #f1e8d5;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #b08d57;
-}
-
-.hairline {
-  border-image: linear-gradient(
-      90deg,
-      transparent,
-      rgba(33, 28, 21, 0.16),
-      transparent
-    )
-    1;
+.link:hover {
+  text-decoration-color: #23574a;
 }
