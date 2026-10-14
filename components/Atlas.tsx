@@ -247,7 +247,7 @@ export default function Atlas() {
 
       <div className="mt-14 grid gap-6 md:grid-cols-[13rem_1fr] md:gap-10">
         <div>
-          <h2 className="font-display text-[22px] leading-tight">Index of places</h2>
+          <h2 className="font-display text-[22px] leading-tight">Where I&apos;ve lived and worked</h2>
         </div>
         <ol className="sm:columns-2 sm:gap-10">
           {places.map((p) => (

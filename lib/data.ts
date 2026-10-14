@@ -307,17 +307,6 @@ export const places: Place[] = [
     orgs: ["cch"],
   },
   {
-    id: "hyderabad",
-    city: "Hyderabad",
-    country: "India",
-    countryCode: "356",
-    coords: [78.4867, 17.385],
-    labelSide: "right",
-    note: "A semester with Minerva.",
-    index: "Minerva semester",
-    orgs: ["minerva"],
-  },
-  {
     id: "taipei",
     city: "Taipei",
     country: "Taiwan",
@@ -409,7 +398,7 @@ export const education: { orgId: OrgId; school: string; detail: string; year: st
     orgId: "minerva",
     school: "Minerva University",
     detail:
-      "Computational Sciences (AI and machine learning) and Business (strategic finance). Seven cities in four years: San Francisco, Seoul, Hyderabad, Berlin, Buenos Aires, London and Taipei.",
+      "Computational Sciences (AI and machine learning) and Business (strategic finance). Classes and work placements in San Francisco, Seoul, Taipei, Buenos Aires, Berlin and London.",
     year: "2025",
   },
   {

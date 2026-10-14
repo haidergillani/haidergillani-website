@@ -56,7 +56,7 @@ export function Work() {
               <p className="mt-4 text-[16px] leading-[1.7]">{r.body}</p>
             </div>
             {r.photo && (
-              <figure className="mt-6 max-w-[16rem] shrink-0 lg:mt-1 lg:w-56">
+              <figure className="mx-auto mt-6 w-full max-w-[16rem] shrink-0 lg:mx-0 lg:mt-1 lg:w-56">
                 <div className="border border-ink/20 bg-plate p-1">
                   <Image
                     src={r.photo.src}
